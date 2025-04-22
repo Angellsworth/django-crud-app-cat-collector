@@ -75,8 +75,8 @@ WSGI_APPLICATION = 'catcollector.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'catcollector',
     }
 }
 
@@ -120,4 +120,5 @@ STATIC_URL = 'static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
+# DEFAULT_AUTO_FIELD = 'django.db.models.BigAutopostgresql'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
