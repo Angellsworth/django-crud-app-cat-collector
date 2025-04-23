@@ -42,7 +42,7 @@
         {### for-loop to loop through cats in views #}
     {% for cat in cats %}
       <div class="card">
-        <a href="/cats/{{ cat.id }}">
+        <a href="{% url 'cat-detail' cat.id %}">
             <div class="card-content">
 
             {### Image container — this is currently hardcoded but could be dynamic if cat images were in the database #}
