@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from .forms import FeedingForm
 from .models import Cat
 
 # Create your views here.
@@ -28,12 +30,22 @@ def cat_index(request):
 
 def cat_detail(request, cat_id):
     cat = Cat.objects.get(id=cat_id)
+    feeding_form = FeedingForm()
     return render(request,'cats/detail.html', {
-        'cat': cat
+        'cat': cat,
+        'feeding_form' : feeding_form
     })
 
 class CatCreate(CreateView):
     model = Cat
     fields = ['name', 'breed', 'description', 'age']
-    success_url = '/cats' #takes us to index. Not preferred way.
-   
+    
+class CatUpdate(UpdateView):
+    model = Cat
+    # Let's disallow the renaming of a cat by excluding the name field!
+    fields = ['breed', 'description', 'age']
+
+class CatDelete(DeleteView):
+    model = Cat
+    success_url = '/cats/'
+
