@@ -26,6 +26,8 @@
             <!-- Logo text image for branding the app -->
         </div>
     </section>
+
+    {% if not user.is_authenticated %}
     <section>
         <h1>Login</h1>
         <form action="{% url 'home' %}" method="post" class="login">
@@ -34,5 +36,6 @@
         <button type="submit" class="btn submit">Login</button>
         </form>
     </section>
+    {% endif %}
   
 {% endblock %}
