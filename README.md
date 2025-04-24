@@ -1,94 +1,88 @@
-Cat Collector 😼
 
-A beginner-friendly Django CRUD application for managing your beloved feline friends.
+# 🐱 Cat Collector  
+**Track, feed, and spoil your digital fur babies.**  
+A full-stack Django CRUD app built with love (and whiskers) as a first dive into Django.
 
-This project was built as a lesson in General Assembly’s Software Engineering program to introduce Django fundamentals: models, views, templates, authentication, and CRUD operations.
+---
 
-⸻
+## 🐾 About the Project
 
-🚀 Project Overview
+Welcome to **Cat Collector** — your cozy little corner of the internet to keep tabs on your beloved kitties.  
+Whether you're managing a mansion full of majestic floofs or a single spicy tabby, this app helps you log meals, assign toys, and feel like the ultimate cat parent.  
+Built during General Assembly’s Software Engineering course, this was my very first paws-on experience with Django!
 
-Cat Collector is a simple full-stack web application built with Django that allows users to:
-	•	Track cats they own or care for
-	•	Log daily feedings
-	•	Associate fun toys with each cat
+---
 
-This was my very first Django CRUD app. It’s designed as a guided project to solidify foundational concepts including model relationships, class-based views, route protection, and Django forms.
+## 🛠️ Tech Stack
 
-⸻
+- 🐍 Python 3.11  
+- 🧱 Django 5.2  
+- 🐘 PostgreSQL  
+- 🎨 HTML, CSS (modular styles)  
+- 🧵 Django Templating Engine  
+- 🧑‍💻 Auth via Django’s built-in User model  
 
-🧰 Tech Stack
-	•	Python 3.11
-	•	Django 5.2
-	•	PostgreSQL
-	•	HTML5 + CSS3 (modular styles)
-	•	Django Templates
-	•	Django Auth (Login, Logout, Signup)
-	•	Local development environment
+---
 
-⸻
+## 📸 Screenshots
 
-📂 Features
-	•	User authentication (sign up, log in, log out)
-	•	Display only cats that belong to the logged-in user
-	•	Full CRUD for Cat model: add, update, delete, view
-	•	Feeding log (one-to-many relationship)
-	•	Toy association (many-to-many relationship)
-	•	Route protection using @login_required and LoginRequiredMixin
-	•	Custom signup form
+_(Include some playful screenshots of your cat list page, toy associations, and the detail view if you have 'em!)_
 
-⸻
+---
 
-⚙️ Setup Instructions
-	1.	Clone the Repository
+## ✨ Features
 
-git clone https://github.com/your-username/django-crud-app-cat-collector.git
-cd django-crud-app-cat-collector
+- 🔐 Secure sign up and login/logout flow  
+- 🐾 Only see and manage your own cats  
+- 📋 Full CRUD for your fluffy little companions  
+- 🦴 Add and manage toys for each cat  
+- 🕒 Log mealtimes with `Feeding` records  
+- 🎨 Custom forms styled with modular CSS  
+- 🚪 Route protection using `@login_required` & `LoginRequiredMixin`  
 
+---
 
-	2.	Install Django in a Virtual Environment
+## 🧪 Setup Instructions
 
+```bash
+# 1. Clone this repository
+git clone https://github.com/your-username/cat-collector.git
+cd cat-collector
+
+# 2. Spin up your virtual environment
 pipenv install django
 pipenv shell
 
-
-	3.	Create the Database
-
+# 3. Create your local database
 createdb catcollector
 
-
-	4.	Apply Migrations
-
+# 4. Make and run migrations
 python manage.py makemigrations
 python manage.py migrate
 
-
-	5.	Start the Server
-
+# 5. Start the dev server
 python manage.py runserver
 
-
-	6.	Visit in Your Browser
-
-http://127.0.0.1:8000
+# 6. Visit the app at:
+http://localhost:8000
 
 
 
 ⸻
 
-📁 File Structure
+📁 Project Structure
 
-django-crud-app-cat-collector/
+catcollector/
 ├── main_app/
 │   ├── static/
 │   ├── templates/
 │   ├── models.py
 │   ├── views.py
-│   ├── forms.py
 │   ├── urls.py
+│   └── forms.py
 ├── catcollector/
-│   ├── settings.py
-├── db.sqlite3 or PostgreSQL
+│   └── settings.py
+├── db (PostgreSQL)
 └── manage.py
 
 
@@ -96,29 +90,35 @@ django-crud-app-cat-collector/
 ⸻
 
 🧠 What I Learned
-	•	The MVC-ish structure of Django (Models, Templates, Views)
-	•	Class-based views for CRUD
-	•	Handling one-to-many and many-to-many relationships
-	•	Django’s built-in User model and authentication system
-	•	Using decorators and mixins to protect routes
-	•	Basic styling of Django-generated forms
+	•	How Django manages models, views, and templates
+	•	How to create and link models using relationships (ForeignKey, ManyToManyField)
+	•	How to secure views using decorators and mixins
+	•	How to make Django forms a little less… plain 😅
+	•	That everything is better with cats 🐈
 
 ⸻
 
-🚀 Future Improvements
-	•	Upload cat photos with Cloudinary
-	•	Add cat birthdays & filter by age
-	•	Generate daily care reminders
+🧹 Future Upgrades
+	•	📸 Upload cat profile pics
+	•	📍 Track feeding locations via Google Maps
+	•	⏰ Schedule notifications for feedings or vet visits
 
 ⸻
 
-🌟 Acknowledgments
+👏 Special Thanks
 
-Big thanks to the instructors and lesson writers at General Assembly for building a strong foundation in Django with this starter project.
+To the wonderful felines in my life (real and digital),
+and to the team at General Assembly for making Django feel less scary.
+You taught me that CRUD can actually be cute.
 
 ⸻
 
-📧 Contact
+📬 Contact
 
 Angela Ellsworth
-GitHub: @Angellsworth
+GitHub | LinkedIn
+
+⸻
+
+“Time spent with cats is never wasted.” – Sigmund Freud
+
