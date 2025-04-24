@@ -24,12 +24,6 @@ Built during General Assembly’s Software Engineering course, this was my very 
 
 ---
 
-## 📸 Screenshots
-
-_(Include some playful screenshots of your cat list page, toy associations, and the detail view if you have 'em!)_
-
----
-
 ## ✨ Features
 
 - 🔐 Secure sign up and login/logout flow  
