@@ -1,18 +1,30 @@
-{% extends 'base.html' %}  
-{% load static %} 
+{% extends 'base.html' %}
+<!-- Inherits layout from base.html, so nav, head, and shared structure are included -->
+
+{% load static %}
+<!-- Load static files to reference images and CSS -->
+
 {% block content %}
+<!-- Main content block starts here -->
 
 <div class="page-header">
   <h1>Delete Cat?</h1>
   <img src="{% static 'images/nerd-cat.svg' %}" alt="A cat using a computer" />
+  <!-- Fun image for emotional support while deleting your cat record -->
 </div>
 
 <h2>Are you sure you want to delete {{ cat.name }}?</h2>
+<!-- Django injects the cat object via the CatDelete view, which uses get_context_data automatically -->
 
 <form action="" method="post" class="form">
   {% csrf_token %}
+  <!-- CSRF token is required for POST submissions in Django -->
+
   <a href="{% url 'cat-detail' cat.id %}" class="btn secondary">Cancel</a>
+  <!-- If the user changes their mind, this link brings them back to the detail view -->
+
   <button type="submit" class="btn danger">Yes - Delete!</button>
+  <!-- Submitting this button triggers the CatDelete view’s post method, which deletes the cat -->
 </form>
 
 {% endblock %}

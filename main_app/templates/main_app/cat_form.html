@@ -1,30 +1,40 @@
 {% extends 'base.html' %}
+<!-- Inherit overall layout and navigation from base.html -->
+
 {% load static %}
+<!-- Enables {% static %} for loading CSS and image assets -->
 
 {% block head %}
+<!-- Page-specific CSS -->
 <link rel="stylesheet" href="{% static 'css/form.css' %}">
 {% endblock %}
 
 {% block content %}
+<!-- Start of unique content for this page -->
 
 <div class="page-header">
-     <!-- Check if a cat object exists to determine if we're editing -->
-    {% if cat %}
+  <!-- Conditional title: if a cat is passed into the context, we're editing; otherwise, it's a new cat -->
+  {% if cat %}
     <h1>Edit {{ cat.name }}</h1>
-    {% else %}
+  {% else %}
     <h1>Add a Cat</h1>
-    {% endif %}
+  {% endif %}
+
+  <!-- Fun themed image for consistent visual branding -->
+  <img src="{% static 'images/nerd-cat.svg' %}" alt="A Cat using a computer">
 </div>
-    <h1>Add a Cat</h1>
-    <img src="{% static 'images/nerd-cat.svg' %}" alt="A Cat using a computer">
 
-
+<!-- Form begins: action="" will POST to the current URL (handled by CreateView or UpdateView) -->
 <form action="" method="post" class="form-container">
-    {% csrf_token %}
-    <table>
-        {{ form.as_table }}
-    </table>
-    <button type="submit" class="btn submit">Submit!</button>
+  {% csrf_token %}
+  <!-- Required for all POST forms in Django to prevent CSRF attacks -->
+
+  <table>
+    {{ form.as_table }}
+    <!-- Renders the model form fields as table rows -->
+  </table>
+
+  <button type="submit" class="btn submit">Submit!</button>
 </form>
 
 {% endblock %}

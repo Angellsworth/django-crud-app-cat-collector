@@ -1,34 +1,53 @@
 {% load static %}
+{# Enables the use of the {% static %} tag to load CSS, images, and other static assets #}
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Basic metadata and responsive config -->
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Favicon (the little cat icon in the browser tab) -->
     <link rel="shortcut icon" type="image/png" href="{% static 'images/splash.svg' %}" />
+
+    <!-- Page title (shown in browser tab) -->
     <title>Cat Collector</title>
+
+    <!-- Base styles for layout, nav, etc. -->
     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
-    {% block head %} 
+
+    {% block head %}
+    <!-- This optional block allows child templates to insert more <head> content like CSS -->
     {% endblock %}
   </head>
+
   <body>
+    <!-- Top banner and navigation -->
     <header>
       <div class="header-logo-container">
         <a href="/">
           <img src="{% static 'images/header-logo.svg' %}" alt="The Cat Collector Logo" width="200px"/>
         </a>
       </div>
+
       <nav>
         <ul>
+          <!-- Navigation links -->
           <li><a href="{% url 'cat-index' %}">All Cats</a></li>
+          <li><a href="{% url 'toy-index' %}">All Toys</a></li>
           <li><a href="{% url 'cat-create' %}">Add a Cat</a></li>
+          <li><a href="{% url 'toy-create' %}">Add a Toy</a></li>
           <li><a href="{% url 'about' %}">About</a></li>
+        </ul>
       </nav>
     </header>
+
+    <!-- This is where the unique content from each page will be inserted -->
     <main>
-     {% block content %} 
-     {% endblock %}
-     </main>
+      {% block content %}
+      {% endblock %}
+    </main>
   </body>
 </html>

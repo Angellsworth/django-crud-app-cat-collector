@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+<!-- Inherits shared layout (header, nav, styles) from base.html -->
+
+{% load static %}
+<!-- Load static assets like images or extra styles -->
+
+{% block content %}
+<!-- This section overrides the content block in base.html -->
+
+<div class="page-header">
+  <h1>Delete Toy?</h1>
+  <img src="{% static 'images/nerd-cat.svg' %}" alt="A cat using a computer" />
+  <!-- Optional themed image for continuity -->
+</div>
+
+<h2>Are you sure you want to delete {{ object.name }}?</h2>
+<!-- 'object' is the default context variable for class-based views like DeleteView -->
+
+<form action="" method="post" class="form">
+  {% csrf_token %}
+  <!-- Security token required for all POST requests in Django -->
+
+  <!-- Cancel button links back to the toy’s detail view -->
+  <a href="{% url 'toy-detail' object.id %}" class="btn secondary">Cancel</a>
+
+  <!-- Submitting this form will trigger the delete operation -->
+  <button type="submit" class="btn danger">Yes - Delete!</button>
+</form>
+
+{% endblock %}

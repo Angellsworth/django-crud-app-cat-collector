@@ -39,38 +39,35 @@
 
   {### Section that will loop through all the cats and render them as cards #}
   <section class="card-container">
-        {### for-loop to loop through cats in views #}
     {% for cat in cats %}
       <div class="card">
         <a href="{% url 'cat-detail' cat.id %}">
-            <div class="card-content">
+          <div class="card-content">
 
             {### Image container — this is currently hardcoded but could be dynamic if cat images were in the database #}
             <div class="card-img-container">
-                <img
+              <img
                 src="{% static 'images/sk8r-boi-cat.svg' %}"
                 alt="A skater boy cat"
-                />
+              />
             </div>
 
-                {### Prints/Displays the cat's name #}
+            {### Prints/Displays the cat's name #}
             <h2 class="card-title">{{ cat.name }}</h2>
 
-                    {### Conditional logic: if the cat has an age above 0, show the age and breed. Otherwise, assume it's a kitten and say so. #}
+            {### Conditional logic: if the cat has an age above 0, show the age and breed. Otherwise, assume it's a kitten and say so. #}
             {% if cat.age > 0 %}
-                <p>A {{ cat.age }} year old {{ cat.breed }}</p>
+              <p>A {{ cat.age }} year old {{ cat.breed }}</p>
             {% else %}
-                <p>A {{ cat.breed }} kitten.</p>
-                {## end block for if statement #}
-            {% endif %} 
+              <p>A {{ cat.breed }} kitten.</p>
+            {% endif %}
 
             {### Small paragraph showing the cat's description #}
             <p><small>{{ cat.description }}</small></p>
-            
-            </div>
+
+          </div>
         </a>
       </div>
-        {## end block for the for-loop #}
     {% endfor %}
   </section>
 
