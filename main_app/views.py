@@ -22,11 +22,6 @@ class Home(LoginView):
 
 # ---------- STATIC & SIMPLE ROUTES ----------
 
-# def home(request):
-#     if request.user.is_authenticated:
-#         return redirect('cat-index')
-#     return render(request, "home.html")
-
 def about(request):
     # Renders the About page with contact information.
     return render(request, "about.html", {
