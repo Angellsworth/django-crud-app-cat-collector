@@ -1,8 +1,3 @@
-<p align="center">
-  <img src="static/images/logotype.svg" alt="Cat Collector Logo" width="300"/>
-</p>
-
-
 Cat Collector 😼
 
 A beginner-friendly Django CRUD application for managing your beloved feline friends.
