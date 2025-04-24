@@ -33,12 +33,6 @@ This was my very first Django CRUD app. It’s designed as a guided project to s
 
 ⸻
 
-📸 Screenshots
-
-Add screenshots of your homepage, cat detail page, or toy form here if desired!
-
-⸻
-
 📂 Features
 	•	User authentication (sign up, log in, log out)
 	•	Display only cats that belong to the logged-in user
