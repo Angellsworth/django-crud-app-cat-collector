@@ -1,25 +1,25 @@
 {% extends 'base.html' %}
-<!-- Inherits from base.html, so it uses the site-wide layout and nav -->
+{% load static %}   
 
-{% block content %}
-<!-- This content replaces the {% block content %} section in base.html -->
-
-<h1>About the Cat Collector</h1>
-<p>
-  Welcome to Cat Collector — a cozy web app where you can track, feed, and accessorize your feline friends.
-  Whether you're managing a dozen rescues or just one mischievous fluffball, this app has your whiskers covered.
-</p>
-
-<h2>Contact Details</h2>
-<p>{{ contact }}</p>
-<!-- This gets passed in from the about() view in views.py -->
-<!-- Example: "You can reach support at support@catcollector.com" -->
-
+{% block head %}
+  <link rel="stylesheet" href="{% static 'css/form.css' %}">
 {% endblock %}
 
-<!-- #Where It Connects
-File ------------------------ Purpose
-views.py ------ The about view renders this file and passes contact
-urls.py ------- The path about/ maps to views.about
-base.html ----- This file inherits layout and nav structure from base
-⸻ -->
+{% block content %}
+  <div class="about-container">
+    <div class="page-header">
+      <h1>About Cat Collector</h1>
+      <img src="{% static 'images/nerd-cat.svg' %}" alt="A Cat using a computer">
+    </div>
+
+    <div class="page-content">
+      <p>
+        Welcome to <strong>Cat Collector</strong> — a cozy web app where you can track, feed, and accessorize your feline friends.
+        Whether you're managing a dozen rescues or just one mischievous fluffball, this app has your whiskers covered.
+      </p>
+
+      <h2>Contact Us</h2>
+      <p>{{ contact }}</p>
+    </div>
+  </div>
+{% endblock %}

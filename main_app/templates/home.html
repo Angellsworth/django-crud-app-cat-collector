@@ -11,20 +11,28 @@
 {% endblock %}
 
 {% block content %}
-<!-- This is the main content block of the page, inserted into base.html's content section -->
+    <!-- This is the main content block of the page, inserted into base.html's content section -->
 
-<section class="logo-container">
-    <!-- Main container for splash logo and title image -->
+    <section class="logo-container">
+        <!-- Main container for splash logo and title image -->
 
-    <div class="cat-container">
-        <img src="{% static 'images/splash.svg' %}" alt="The Cat Collector Cat">
-        <!-- Cat mascot or splash image for the home page -->
-    </div>
+        <div class="cat-container">
+            <img src="{% static 'images/splash.svg' %}" alt="The Cat Collector Cat">
+            <!-- Cat mascot or splash image for the home page -->
+        </div>
 
-    <div class="cat-container">
-        <img src="{% static 'images/logotype.svg' %}" alt="Text reads: Cat Collector">
-        <!-- Logo text image for branding the app -->
-    </div>
-</section>
-
+        <div class="cat-container">
+            <img src="{% static 'images/logotype.svg' %}" alt="Text reads: Cat Collector">
+            <!-- Logo text image for branding the app -->
+        </div>
+    </section>
+    <section>
+        <form action="{% url 'home' %}" method="post" class="login">
+        <h1>Login</h1>
+        {% csrf_token %} {{ form.as_p }}
+        <input type="hidden" name="next" value="{{ next }}" />
+        <button type="submit" class="btn submit">Login</button>
+        </form>
+    </section>
+  
 {% endblock %}

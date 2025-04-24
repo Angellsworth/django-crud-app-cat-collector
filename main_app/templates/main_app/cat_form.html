@@ -1,12 +1,8 @@
 {% extends 'base.html' %}
-<!-- Inherit overall layout and navigation from base.html -->
-
-{% load static %}
-<!-- Enables {% static %} for loading CSS and image assets -->
+{% load static %}  
 
 {% block head %}
-<!-- Page-specific CSS -->
-<link rel="stylesheet" href="{% static 'css/form.css' %}">
+  <link rel="stylesheet" href="{% static 'css/form.css' %}">
 {% endblock %}
 
 {% block content %}

@@ -1,5 +1,7 @@
 from django.db import models
-from django.urls import reverse
+from django.urls import reverse  # Helps with generating URL paths
+from datetime import date  # For checking today's feedings
+from django.contrib.auth.models import User  # Needed for user-cat relationship
 
 # Choices used for the 'meal' field in Feeding model
 # First value is stored in the database, second is the human-readable label
@@ -29,6 +31,7 @@ class Toy(models.Model):
     def get_absolute_url(self):
         # Tells Django where to redirect after Create/Update
         # Used by ToyCreate and ToyUpdate views
+        # PK - because we are using class based views
         return reverse("toy-detail", kwargs={"pk": self.id})
 
 
@@ -53,6 +56,9 @@ class Cat(models.Model):
 
     toys = models.ManyToManyField(Toy)
     # Many-to-Many: a cat can have multiple toys, and toys can belong to multiple cats
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # ☝️ This line links a cat to a user
 
     def __str__(self):
         # Used in admin panel or shell

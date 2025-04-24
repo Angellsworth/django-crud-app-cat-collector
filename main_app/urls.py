@@ -3,7 +3,7 @@ from . import views  # Imports all view functions and class-based views from vie
 
 urlpatterns = [
     # Home page route (LoginView-based, displays login form)
-    path("", views.home, name="home"),
+    path("", views.Home.as_view(), name="home"),
 
     # About page route (static info, function-based view)
     path("about/", views.about, name="about"),
@@ -48,4 +48,6 @@ urlpatterns = [
 
     # Route to remove the toy-to-cat association
     path('cats/<int:cat_id>/remove-toy/<int:toy_id>/', views.remove_toy, name='remove-toy'),
+
+    path('accounts/signup/', views.signup, name='signup'),
 ]
