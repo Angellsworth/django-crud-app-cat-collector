@@ -1,12 +1,14 @@
+# Django imports
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import login
-from .forms import CustomUserCreationForm, FeedingForm
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
+
+# Forms and models from this app
+from .forms import CustomUserCreationForm, FeedingForm
 from .models import Cat, Toy
 
 # ---------- AUTH VIEW ----------
@@ -19,6 +21,23 @@ class Home(LoginView):
         if request.user.is_authenticated:
             return redirect('cat-index')
         return super().dispatch(request, *args, **kwargs)
+
+# ---------- SIGNUP VIEW ----------
+
+def signup(request):
+    error_message = ''
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)  # Auto login new user
+            return redirect('cat-index')
+        else:
+            error_message = 'Invalid sign up - try again'
+    # else:
+    form = CustomUserCreationForm()
+    context = {'form': form, 'error_message': error_message}
+    return render(request, 'signup.html', context)
 
 # ---------- STATIC & SIMPLE ROUTES ----------
 
@@ -36,6 +55,7 @@ def cat_index(request):
     cats = Cat.objects.filter(user=request.user)
     return render(request, "cats/index.html", {"cats": cats})
 
+@login_required
 def cat_detail(request, cat_id):
     # Displays one cat and its toys/feedings
     cat = Cat.objects.get(id=cat_id)
@@ -64,6 +84,7 @@ class CatDelete(LoginRequiredMixin, DeleteView):
     model = Cat
     success_url = "/cats/"
 
+@login_required
 def add_feeding(request, cat_id):
     form = FeedingForm(request.POST)
     if form.is_valid():
@@ -98,24 +119,9 @@ def associate_toy(request, cat_id, toy_id):
     Cat.objects.get(id=cat_id).toys.add(toy_id)
     return redirect('cat-detail', cat_id=cat_id)
 
+@login_required
 def remove_toy(request, cat_id, toy_id):
     cat = Cat.objects.get(id=cat_id)
     cat.toys.remove(toy_id)
     return redirect('cat-detail', cat_id=cat.id)
 
-# ---------- SIGNUP VIEW ----------
-
-def signup(request):
-    error_message = ''
-    if request.method == 'POST':
-        form = CustomUserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)  # Auto login new user
-            return redirect('cat-index')
-        else:
-            error_message = 'Invalid sign up - try again'
-    else:
-        form = CustomUserCreationForm()
-    context = {'form': form, 'error_message': error_message}
-    return render(request, 'signup.html', context)
